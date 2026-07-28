@@ -1,8 +1,4 @@
-# clarity_lazyvim
-
-<p align="center">
-  <img src="doc/assets/clarity-hero.svg" alt="Clarity LazyVim hero banner" width="100%" />
-</p>
+# Clarity LazyVim
 
 <p align="center">
   <a href="https://github.com/Nongfsq/clarity_lazyvim/actions/workflows/clarity-validate.yml">
@@ -10,34 +6,34 @@
   </a>
   <img src="https://img.shields.io/badge/Neovim-0.12%2B-57A143?style=flat-square&logo=neovim&logoColor=white" alt="Neovim 0.12+" />
   <img src="https://img.shields.io/badge/Foundation-LazyVim-0F172A?style=flat-square" alt="LazyVim foundation" />
-  <img src="https://img.shields.io/badge/Platforms-Windows%20%7C%20WSL2%20%7C%20Linux-1F6FEB?style=flat-square" alt="Windows WSL2 Linux" />
+  <img src="https://img.shields.io/badge/Accessibility-Colorblind--first-7C3AED?style=flat-square" alt="Colorblind-first accessibility" />
   <a href="LICENSE">
     <img src="https://img.shields.io/github/license/Nongfsq/clarity_lazyvim?style=flat-square" alt="MIT license" />
   </a>
 </p>
 
 <p align="center">
-  An accessibility-first, high-contrast, product-shaped Neovim distribution built on <a href="https://www.lazyvim.org/">LazyVim</a>.
+  A colorblind-first, high-contrast Neovim distribution built on <a href="https://www.lazyvim.org/">LazyVim</a>.
 </p>
 
 <p align="center">
-  Designed for people who want the speed of Neovim without the usual plugin sprawl, shell coupling, or "I updated it and nothing changed" confusion.
+  Clear color distinction, readable code, and calm review workflows—without the usual plugin sprawl.
 </p>
 
 ## Why Clarity
 
-Most personal Neovim repos are powerful but hard to trust.
+Color must not be the only signal that tells you what changed or what matters. Clarity starts with strong contrast, distinct syntax groups, and a colorblind-friendly visual system; it then applies that same clarity to navigation, recovery, and review.
 
 `clarity_lazyvim` takes a different position:
 
 - readability is a product feature, not a theme afterthought
-- one recommended path is better than five clever ones
-- optional tools stay optional
-- Windows + WSL workflows should be explicit, not tribal knowledge
-- validation matters as much as visual polish
+- high-contrast, colorblind-friendly distinction is the default—not an optional theme tweak
+- one obvious path per review job is better than five clever ones
+- code intelligence remains available for navigation and repair, while generation stays external
+- project toolchains own their language servers, formatters, and parsers; Clarity discovers rather than silently installs them
+- local, machine-readable validation matters as much as visual polish
 
-This repo is not an `oh-my-zsh` bundle, not a shell framework, and not a maximalist plugin showcase.
-It is a focused editor product for daily work.
+This repo is not a shell framework, maximalist plugin showcase, or another in-editor AI client. It is a focused editor product for readable daily work, review, and precise correction.
 
 ## What You Get
 
@@ -45,10 +41,13 @@ It is a focused editor product for daily work.
 | --- | --- | --- |
 | File search | `<leader>ff` | Fast project entry without depending on file trees for everything |
 | Text search | `<leader>fw` | One obvious search path backed by Snacks picker |
+| File topology | `<leader>e` | Inspect unfamiliar project structure with the single Neo-tree explorer |
+| Change review | `]h`, `[h`, `<leader>ghp`, `<leader>ghd` | Move among hunks, preview a change, and diff the current file with Gitsigns |
+| Code navigation | `gd`, `gr`, `gl` | Follow symbols and diagnostics when the project language tools are available |
+| Formatting | `<leader>cf` | Apply a project-provided formatter or LSP fallback without editor-owned provisioning |
 | Code folding | `<leader>cz` | Toggle the fold containing the cursor without memorizing Vim's `z` commands |
 | Line wrapping | `<leader>uw` | Long lines wrap visually by default; toggle per editing window |
-| Terminal | `<leader>tf` | Reliable integrated terminal workflow inside the editor |
-| Git hunks | `<leader>ghs`, `<leader>ghr`, `<leader>ghp` | Git hunk actions live under the truthful `<leader>gh` group |
+| Terminal | `<leader>tf` | One reusable floating terminal for tests, Git, and recovery commands |
 | Recovery | `:ClarityHealth`, `<leader>hh` | One product-level help, health, and recovery entry |
 | Language | `:ClarityLanguage` | Switch Clarity-owned UI between `auto`, `en`, and `zh` |
 | Audit | `:ClarityAudit` | Environment and dependency readiness in one command |
@@ -57,13 +56,13 @@ It is a focused editor product for daily work.
 
 ## Product Highlights
 
-### Accessibility-first visual system
+### Colorblind-first visual system
 
-The custom theme is built around strong contrast, clearer syntax separation, and better readability for red-green colorblind users.
+The custom theme is the product's foundation: strong contrast, clearer syntax separation, and meaningful visual distinction for red-green colorblind users. It is designed to keep code, diagnostics, and Git changes legible without relying on a red-versus-green cue alone.
 
 ### Curated plugin surface
 
-The active stack stays intentionally small:
+The active stack stays intentionally small and every direct dependency has a review, precision-editing, or accessibility job:
 
 - LazyVim core
 - Snacks picker and floating terminal
@@ -72,7 +71,7 @@ The active stack stays intentionally small:
 - `conform.nvim`
 - `nvim-treesitter`
 
-Several inherited or optional power-user plugins are deliberately disabled to keep the public product easier to audit and maintain.
+Clarity deliberately has no embedded Copilot or other AI provider, no Node product profile, no development-profile switch, no automatic Mason/parser installation, and no second terminal, explorer, picker, or Git client. Noice remains only as a presentation adapter because native messages did not pass the required attached-UI fault contract.
 
 ### First-run guidance that actually helps
 
@@ -102,13 +101,9 @@ Clarity now prefers a steadier terminal experience over extra motion or decorati
 
 The goal is simple: typing, vertical movement, and window motion should feel stable before they feel fancy.
 
-### Windows + WSL workflow discipline
+### External-agent workflow, not embedded generation
 
-The project documents and supports a simple operational rule:
-
-1. Windows repo is the source of truth for edits, commits, and pushes.
-2. WSL repo is the runtime mirror.
-3. If WSL behavior looks old, compare `HEAD` before debugging anything else.
+Use your preferred external coding agent for broad implementation. Open the resulting branch or working tree in Clarity to search the affected files, review Git hunks, navigate symbols and diagnostics, run project commands, and apply small corrections. The repository's scripts and JSON reports are the provider-neutral interface for automation; Clarity does not send source code, prompts, or telemetry to an AI provider.
 
 ### Built-in trust layer
 
@@ -174,11 +169,14 @@ Clarity is organized as a thin product layer over LazyVim. The goal is not to re
 
 ```mermaid
 flowchart TB
-    User["Editor User"] --> Entry["Neovim 0.12+"]
+    Agent["External coding agent"] --> Change["Branch or working tree"]
+    User["Reviewer"] --> Entry["Neovim 0.12+"]
+    Change --> Entry
     Entry --> Bootstrap["init.lua bootstrap"]
     Bootstrap --> Lazy["lazy.nvim + LazyVim"]
 
     subgraph Product["Clarity Product Layer"]
+        Review["Review: search, topology, hunks, diagnostics"]
         Theme["High-contrast accessibility theme"]
         RuntimeUI["Bilingual help, menus, and notifications"]
         Policy["Curated plugin policy"]
@@ -212,10 +210,10 @@ sequenceDiagram
     participant Clarity as Clarity layer
     participant Tools as External tools
 
-    User->>NVIM: nvim
+    User->>NVIM: Open agent-produced change
     NVIM->>Lazy: bootstrap plugins from lazy-lock.json
     Lazy->>Clarity: load options, keymaps, theme, commands
-    Clarity->>Tools: detect Git, ripgrep, Python, clipboard, and project tools
+    Clarity->>Tools: discover Git, ripgrep, clipboard, and project tools
     Clarity->>NVIM: register :ClarityHealth and compatibility commands
     alt first empty interactive startup
         Clarity->>User: show welcome and recovery guide
@@ -253,26 +251,26 @@ flowchart TD
 | Safe repair | `python3 scripts/clarity_doctor.py --apply` | Stale local parser overrides can be backed up without deleting files | Only runs conservative local repairs |
 | Runtime audit | `:ClarityAudit` or `python3 scripts/run_clarity_audit.py` | In-editor environment readiness and integration status | Missing required tools reduce readiness and should be fixed |
 | Behavior validation | `:ClarityValidate` or `python3 scripts/run_clarity_validate.py` | Keymaps, UI behavior, providers, parser health, localization parity | Required failures indicate a product/runtime regression |
-| CI baseline | GitHub Actions `clarity-validate` | Ubuntu and Windows reproducibility | Failing CI blocks trusted release state |
+| CI baseline | GitHub Actions `clarity-validate` | Ubuntu, Windows, and macOS reproducibility | Required remote evidence is pending; a successful matrix is needed for release trust |
 
 ### Platform model
 
 | Platform | Primary purpose | Clone target | Notes |
 | --- | --- | --- | --- |
-| Windows | Authoring and GitHub source-of-truth workflow | `%LOCALAPPDATA%\nvim` | Keep commits and pushes explicit; compare `HEAD` before debugging stale WSL behavior |
-| WSL / Linux | Daily terminal runtime | `~/.config/nvim` | Best match for terminal-first workflows and Linux developer tools |
-| macOS | Local UNIX-like runtime | `~/.config/nvim` | Uses Homebrew-friendly tooling; doctor reports local Python/npm provider status |
+| Windows | Intended native runtime | `%LOCALAPPDATA%\nvim` | Windows release evidence is pending; do not infer support from another host |
+| WSL / Linux | Terminal runtime | `~/.config/nvim` | Manual Ubuntu evidence exists; WSL remains separately unverified |
+| macOS | Local UNIX-like runtime | `~/.config/nvim` | Local macOS validation has passed; Python provider is optional |
 
 ### Dependency strategy
 
 The project follows seven hard rules:
 
 1. Shell frameworks such as `oh-my-zsh` are not runtime foundations.
-2. Optional tools must degrade gracefully.
-3. Formatter and provider requirements must be documented.
+2. Project-owned language tools are discovered, never installed in the background.
+3. Missing formatters and providers must yield actionable, feature-specific recovery.
 4. The source of truth for plugin versions is the root [`lazy-lock.json`](lazy-lock.json).
 5. Source comments stay English-only; Clarity-owned runtime UI may localize to English or Chinese.
-6. Public docs describe public behavior; local AI planning files stay out of the repo.
+6. Public docs describe the product boundary; `docs/ai` defines the repository contract for coding agents.
 7. Clarity-owned code uses a unified four-space indentation policy across editor defaults, formatters, and `.editorconfig`.
 
 ## Tech Stack
@@ -289,24 +287,11 @@ The project follows seven hard rules:
   <img src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white" alt="GitHub Actions" />
 </p>
 
-## Current Validation Status
+## Validation Status
 
-As of 2026-07-09:
+As of 2026-07-10, the agent-era review surface passes its local macOS gate and recorded manual Ubuntu gate. Windows, WSL, and commit-bound GitHub Actions matrix evidence are still pending, so Clarity makes no cross-platform release-certification claim. Local success does not replace the required remote matrix.
 
-- the current macOS machine passes required local runtime validation, with an
-  optional `pynvim` warning;
-- the local audit reports `core=ready`; optional profiles are reported separately
-  and local release quality remains `unverified`;
-- the public GitHub Actions history has no successful completed Ubuntu/Windows
-  baseline, so cross-platform release validation is not currently claimed;
-- the evidence-backed project review is `58/100`, with a target of at least
-  `95/100` and no open P0/P1 findings.
-
-See the [current quality review](docs/reviews/2026-07-09-clarity-95-quality-review.md)
-and [active refactor plan](progress/2026-07-09-clarity-95-refactor-plan.md).
-Use `python3 scripts/clarity_doctor.py` for local environment diagnosis and
-`python3 scripts/run_clarity_smoke.py` for an isolated candidate boot; local
-success does not replace the required remote CI evidence.
+See the [current state ledger](docs/ai/current-reality.md), [agent-era product intent](docs/product/clarity-agent-era-review-console-pm.md), and [implementation evidence plan](progress/2026-07-10-agent-era-review-console-plan.md).
 
 ## Validation
 
@@ -326,6 +311,7 @@ python3 scripts/run_clarity_audit.py
 python3 scripts/run_clarity_validate.py
 python3 scripts/run_clarity_contracts.py
 python3 scripts/run_clarity_tests.py fast
+python3 scripts/run_clarity_tests.py release
 python3 scripts/update_clarity_lock.py
 ```
 
@@ -370,7 +356,7 @@ Validation currently covers:
 - a required Ubuntu/Windows/macOS workflow matrix (remote evidence pending)
 - keymap assertions for high-frequency paths
 - single-explorer directory startup and code fold/line-wrap behavior
-- dashboard, `neo-tree`, and terminal UI behavior
+- Neo-tree and terminal UI behavior
 - clipboard and optional Python-provider readiness
 - Tree-sitter `vim` parser/query/highlighter health
 - local user-level parser override detection
@@ -399,7 +385,7 @@ Run:
 python3 scripts/clarity_doctor.py
 ```
 
-The doctor is a cross-platform dry-run check for macOS, Linux, and WSL. It reports:
+The doctor is a cross-platform dry-run check for macOS, Linux, WSL, and Windows. It reports:
 
 - required and recommended tools
 - provider packages
@@ -484,10 +470,10 @@ The related features warn and degrade gracefully instead of crashing the editor.
 
 - Chinese complete guide: [doc/clarity_lazyvim_complete_guide_zh.md](doc/clarity_lazyvim_complete_guide_zh.md)
 - Documentation index: [docs/DOCUMENT_INDEX.md](docs/DOCUMENT_INDEX.md)
-- Current 95+ quality review: [docs/reviews/2026-07-09-clarity-95-quality-review.md](docs/reviews/2026-07-09-clarity-95-quality-review.md)
-- Approved refactor architecture: [docs/architecture/2026-07-09-clarity-95-refactor-blueprint.md](docs/architecture/2026-07-09-clarity-95-refactor-blueprint.md)
-- Product and UX plan: [docs/product/clarity-95-experience-pm.md](docs/product/clarity-95-experience-pm.md)
-- The older [product evaluation](doc/clarity_architecture_governance.md) is retained as a historical snapshot.
+- Agent-era product intent: [docs/product/clarity-agent-era-review-console-pm.md](docs/product/clarity-agent-era-review-console-pm.md)
+- Agent-era architecture: [docs/architecture/2026-07-10-agent-era-editor-surface-blueprint.md](docs/architecture/2026-07-10-agent-era-editor-surface-blueprint.md)
+- Agent-era evidence plan: [progress/2026-07-10-agent-era-review-console-plan.md](progress/2026-07-10-agent-era-review-console-plan.md)
+- Earlier quality and architecture reviews are retained as historical evidence in [docs/reviews](docs/reviews/) and [docs/architecture](docs/architecture/).
 
 ## Project Structure
 
